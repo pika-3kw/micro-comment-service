@@ -35,7 +35,7 @@ app.get("/posts/:postId/comments", (req, res) => {
   res.json({ comments: postComments });
 });
 
-app.post("/posts/:postId/comments", async (req, res) => {
+app.post("/posts/:postId/comments", (req, res) => {
   const _id = randomBytes(4).toString("hex");
   const { content } = req.body;
   const { postId } = req.params;
@@ -61,7 +61,7 @@ app.post("/posts/:postId/comments", async (req, res) => {
     comments.push(commentsByPostId);
   }
 
-  await axios.post("http://localhost:4000/events", {
+  axios.post("http://localhost:4000/events", {
     type: "CommentCreated",
     data: { ...comment, postId },
   });
