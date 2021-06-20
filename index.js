@@ -54,11 +54,7 @@ app.post("/posts/:postId/comments", (req, res) => {
     commentsByPostId = {
       _id: randomBytes(4).toString("hex"),
       postId,
-      comments: [
-        {
-          comment,
-        },
-      ],
+      comments: [comment],
     };
 
     comments.push(commentsByPostId);
