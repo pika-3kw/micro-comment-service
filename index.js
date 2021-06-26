@@ -21,6 +21,10 @@ let comments = [];
 //   ],
 // }]
 
+app.get(/^\/$/, (req, res) => {
+  res.send("Comment Service");
+});
+
 app.get("/posts/:postId/comments", (req, res) => {
   const { postId } = req.params;
 
